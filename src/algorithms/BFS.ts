@@ -33,21 +33,21 @@ export class BFS implements Algorithm {
       const encodedCurrPos = encodePosition(currPos);
       const [currRow, currCol] = currPos;
 
+      const currMinDist = minDistGrid[currRow][currCol];
+
+      // If has been visited, dont visit
+      if (visited.has(encodedCurrPos)) continue;
+
       // Mark in visit order
       visit_order.push(currPos);
-      const currMinDist = minDistGrid[currRow][currCol];
+      // Not visited, thus expand and mark as visited
+      visited.add(encodedCurrPos);
 
       if (currRow == endRow && currCol == endCol) {
         // There is a path from start to end, thus construct paths
         paths = constructPaths({ graph, minDistGrid });
         break;
       }
-
-      // If has been visited, dont visit
-      if (visited.has(encodedCurrPos)) continue;
-
-      // Not visited, thus expand and mark as visited
-      visited.add(encodedCurrPos);
 
       const adjNodes = getAdjacentCell({ graph, position: currPos });
       for (const adjNode of adjNodes) {
@@ -59,10 +59,7 @@ export class BFS implements Algorithm {
         // Adj cell not is not a wall and check the min distance
         const adjPosition: [number, number] = [adjCell.row, adjCell.col];
         const adjMinDist = minDistGrid[adjCell.row][adjCell.col];
-        if (
-          !visited.has(encodePosition(adjPosition)) &&
-          currMinDist.minDist + cost <= adjMinDist.minDist
-        ) {
+        if (!visited.has(encodePosition(adjPosition))) {
           // Update the minDist of the adj cell
           adjMinDist.minDist = currMinDist.minDist + cost;
           adjMinDist.from = currPos;
@@ -71,6 +68,10 @@ export class BFS implements Algorithm {
       }
     }
 
-    return new Output({ paths: paths, visit_order: visit_order });
+    return new Output({
+      paths: paths,
+      visit_order: visit_order,
+      pathLength: minDistGrid[endRow][endCol].minDist,
+    });
   }
 }

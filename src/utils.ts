@@ -22,7 +22,6 @@ export const getAdjacentCell = ({
   for (const key of Object.keys(DIR) as Array<
     "left" | "top" | "right" | "bottom"
   >) {
-    console.log(key);
     const [d_row, d_col] = DIR[key];
     const [adjRow, adjCol] = [row + d_row, col + d_col];
 

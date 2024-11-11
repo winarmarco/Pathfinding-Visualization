@@ -61,13 +61,14 @@ const selectField = document.getElementById("algorithm");
 const resetButton = document.getElementById("reset-button");
 const clearButton = document.getElementById("clear-button");
 const startButton = document.getElementById("start-button");
+const analytics = document.getElementById("analytics");
 
 const leftCost = document.getElementById("cost-left") as HTMLInputElement;
 const rightCost = document.getElementById("cost-right") as HTMLInputElement;
 const topCost = document.getElementById("cost-up") as HTMLInputElement;
 const bottomCost = document.getElementById("cost-down") as HTMLInputElement;
 
-if (startButton && resetButton && clearButton) {
+if (startButton && resetButton && clearButton && analytics) {
   startButton.onclick = async (e) => {
     AppState.getInstance().isStop = false;
     startButton.setAttribute("disabled", "true");
@@ -103,6 +104,7 @@ if (startButton && resetButton && clearButton) {
 
     await runAnimation({ output, graph });
 
+    analytics.textContent = `Path length: ${output.pathLength}`;
     clearButton.removeAttribute("disabled");
     resetButton.removeAttribute("disabled");
   };

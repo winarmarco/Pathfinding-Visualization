@@ -10,7 +10,6 @@ export const getAdjacentCell = ({ graph, position, }) => {
     const [row, col] = position;
     const adjCells = [];
     for (const key of Object.keys(DIR)) {
-        console.log(key);
         const [d_row, d_col] = DIR[key];
         const [adjRow, adjCol] = [row + d_row, col + d_col];
         const invalidAdjPosition = adjRow < 0 ||

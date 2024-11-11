@@ -57,7 +57,6 @@ export class Astar implements Algorithm {
       for (const adjNode of adjNodes) {
         const adjCell = adjNode.cell;
         const cost = adjNode.cost;
-        console.log(`COST ${cost}`);
         const heuristicCost = this.heuristic.calculateHeuristic({
           currNode: [adjCell.row, adjCell.col],
           endNode: endPos,
@@ -83,6 +82,10 @@ export class Astar implements Algorithm {
       }
     }
 
-    return new Output({ paths: paths, visit_order: visit_order });
+    return new Output({
+      paths: paths,
+      visit_order: visit_order,
+      pathLength: minDistGrid[endRow][endCol].minDist,
+    });
   }
 }

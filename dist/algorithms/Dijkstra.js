@@ -63,7 +63,10 @@ export class Dijkstra {
             // Sort priorityQueue to get the smallest element on top
             priorityQueue.sort((a, b) => a[0] - b[0]);
         }
-        console.log(minDistGrid[endRow][endCol].minDist);
-        return new Output({ paths: paths, visit_order: visit_order });
+        return new Output({
+            paths: paths,
+            visit_order: visit_order,
+            pathLength: minDistGrid[endRow][endCol].minDist,
+        });
     }
 }
