@@ -3,6 +3,7 @@
 A web-based visualization tool for exploring popular pathfinding algorithms. This project provides an interactive way to learn about and understand various algorithms used for finding the shortest path in grid-based systems.
 
 ## Table of Contents
+- [Live Demo](#live-demo)
 - [Features](#features)
 - [Demo Video](#demo-video)
 - [Algorithms Supported](#algorithms-supported)
@@ -13,6 +14,8 @@ A web-based visualization tool for exploring popular pathfinding algorithms. Thi
 - [License](#license)
 
 ---
+## Live Demo
+Try out the live version of the project: [Pathfinding Algorithm Visualization](https://winamarco.github.io/Pathfinding-Visualization/)
 
 ## Features
 - **Interactive Interface**: Visualize pathfinding algorithms on a customizable grid.
