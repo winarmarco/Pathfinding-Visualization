@@ -1,0 +1,254 @@
+:root {
+  --default-wall: #606060;
+}
+/* Global reset for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; /* Apply Google Font */
+}
+
+/* Body and board setup */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* Hide the checkbox input */
+.toggle-input {
+  display: none;
+}
+
+/* Style for the outer label container */
+.toggle-box {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Base style for the animated box */
+.animated-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid black;
+  transition: border-color 0.4s ease, background-color 0.4s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Splash animation when checked */
+.animated-box::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: var(--splash-color, --default-wall);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease, top 0.4s ease, left 0.4s ease;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1; /* Make splash background lower than content */
+}
+
+/* Checked state: splash effect */
+.toggle-input:checked + .animated-box {
+  background-color: var(--default-wall);
+  border-color: transparent;
+}
+
+/* Splash animation when checked */
+.toggle-input:checked + .animated-box::after {
+  width: 200%;
+  height: 200%;
+  opacity: 1;
+}
+
+/* Unchecked state - revert to border only */
+.toggle-input:not(:checked) + .animated-box {
+  background-color: transparent;
+  border-color: black;
+}
+
+/* Style for the content inside the box */
+.animated-box .content {
+  position: relative;
+  z-index: 2; /* Make content appear above the splash background */
+  color: black; /* Optional: Ensure text color is visible on splash */
+  pointer-events: none;
+  user-select: none; /* Prevent text selection */
+  font-weight: bold;
+}
+
+.button {
+  background-color: black;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.button.danger {
+  background-color: red;
+}
+
+*:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Wrapper for custom arrow */
+.styled-select-wrapper {
+  position: relative;
+  width: 200px; /* Set the width of the wrapper */
+}
+
+.styled-select {
+  width: 100%;
+  padding: 1rem;
+  font-size: 16px;
+  color: #333;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* For Safari */
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Custom arrow inside the wrapper */
+.styled-select-wrapper::after {
+  content: "▼";
+  font-size: 12px;
+  color: black;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Prevents clicking on the arrow */
+}
+
+/* Hover effect for select */
+.styled-select:hover {
+  background-color: white;
+}
+
+/* Style the dropdown on focus */
+.styled-select:focus {
+  border-color: black;
+}
+
+.settings {
+  position: relative;
+}
+
+.settings-list.hide {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.settings-list {
+  cursor: default;
+  position: absolute;
+  width: 200px;
+  height: max-content;
+  background-color: white;
+  top: 50px;
+  left: -50%;
+  z-index: 3;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 200ms;
+}
+
+.settings-section {
+  margin-top: 0;
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: start;
+}
+
+.settings-section p {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Style for cost grid with directional arrows */
+.cost-grid {
+  display: grid;
+  grid-template-columns: 40px 16px 40px 16px 40px;
+  grid-template-rows: 25px 16px 25px 16px 25px;
+  gap: 2px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+}
+
+#settings-button {
+  padding: 1rem;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#ok-button {
+  padding: 0.5rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+/* Styling for the selector */
+.selector-container {
+  display: grid;
+  border: 1px solid #333; /* Outline color */
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 8px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.selector-container > label {
+  width: 100%;
+  display: flex;
+}
+
+.selector-option {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  color: #333;
+  background-color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style for checked radio button */
+input[type="radio"]:checked + .selector-option {
+  background-color: #333;
+  color: white;
+}
+
+/* Hide the actual radio buttons */
+input[type="radio"] {
+  display: none;
+}
