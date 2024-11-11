@@ -160,7 +160,7 @@ body {
 .settings-list {
   cursor: default;
   position: absolute;
-  width: 200px;
+  width: 250px;
   height: max-content;
   background-color: white;
   top: 50px;
@@ -176,13 +176,15 @@ body {
   margin-top: 0;
   display: flex;
   width: 100%;
-  margin-bottom: 1rem;
   flex-direction: column;
   align-items: start;
 }
 
+.settings-section:nth-child(1) {
+  margin-bottom: 3rem;
+}
+
 .settings-section p {
-  font-weight: bold;
   margin-bottom: 1rem;
 }
 
@@ -251,4 +253,16 @@ input[type="radio"]:checked + .selector-option {
 /* Hide the actual radio buttons */
 input[type="radio"] {
   display: none;
+}
+
+#analytics {
+  display: flex;
+  height: 100%;
+  margin: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  margin-top: 3rem;
 }

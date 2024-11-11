@@ -3,38 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="description" content="Visualize various pathfinding algorithms like DFS, BFS, Dijkstra, and A* with adjustable settings for animation speed and cost metrics.">
+  <meta name="keywords" content="pathfinding, algorithm visualization, DFS, BFS, Dijkstra, A*, Euclidean distance, Manhattan distance, maze solving, animation, settings">
+  <meta name="author" content="Your Name or Project Name">
+
+  <title>Pathfinding Algorithm Visualization Tool</title>
 
   <!-- Google Fonts Import -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
 
   <style>
     * {
       padding: 0;
       margin: 0;
-      font-family: 'Roboto', sans-serif; /* Apply Google Font */
+      font-family: 'Roboto', sans-serif;
     }
 
     #board {
       display: grid;
-      grid-template-columns: repeat(10, 50px); /* Adjust to use GRID_COL and CELL_SIZE */
+      grid-template-columns: repeat(10, 50px);
       grid-template-rows: repeat(5, 50px); 
       gap: 0;
     }
   </style>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-    <div style="display: flex; flex-direction: row; margin-bottom: 10px; column-gap: 10px;">
+<body style="display: flex; flex-direction: column; justify-content: center; height: 100vh; align-items: center;">
+  <header style="margin-bottom: 2.5rem; text-align: center;">
+    <h1>Pathfinding Algorithm Visualization</h1>
+    <p>Explore how different pathfinding algorithms work in a visual and interactive way!</p>
+  </header>
 
+  <main style="">
+    <section id="controls" style="display: flex; flex-direction: row; margin-bottom: 10px; column-gap: 10px;">
       <button id="start-button" class="button">START!</button>
       <button id="reset-button" class="button" disabled>RESET</button>
       <button id="clear-button" class="button danger">CLEAR</button>
 
       <div class="styled-select-wrapper">
+        <label for="algorithm" style="display: none;">Choose Algorithm:</label>
         <select id="algorithm" class="styled-select">
           <option>DFS</option>
           <option>BFS</option>
@@ -47,14 +59,15 @@
       <div class="settings">
         <button id="settings-button">
           <i class="fas fa-cog"></i> 
-          </button>
+        </button>
 
-        
         <div class="settings-list hide">
           <div class="settings-section">
-            <p>Cost</p>
+            <h2>Cost Settings</h2>
+            <p>Set cost values for each direction:</p>
             <div class="cost-grid">
               <span style="grid-column-start: 0; grid-column-end: 3;"></span>
+              <label for="cost-up" style="display: none;">Cost Up</label>
               <input type="number" min="1" value="1" id="cost-up" />
               <span style="grid-column-start: 4; grid-column-end: 6;"></span>
 
@@ -62,26 +75,27 @@
               <span class="arrow">&#8593;</span> <!-- Up Arrow -->
               <span style="grid-column-start: 4; grid-column-end: 6;"></span>
 
-              <input type="number" min="1" value="1" style="" id="cost-left"/>
+              <label for="cost-left" style="display: none;">Cost Left</label>
+              <input type="number" min="1" value="1" id="cost-left"/>
               <span class="arrow">&#8592;</span> <!-- Left Arrow -->
               <span style="text-align: center;">o</span>
               <span class="arrow">&#8594;</span> <!-- Right Arrow -->
+              <label for="cost-right" style="display: none;">Cost Right</label>
               <input type="number" min="1" value="1" id="cost-right" />
-
 
               <span style="grid-column-start: 0; grid-column-end: 3;"></span>
               <span class="arrow">&#8595;</span> <!-- Down Arrow -->
               <span style="grid-column-start: 4; grid-column-end: 6;"></span>
 
               <span style="grid-column-start: 0; grid-column-end: 3;"></span>
+              <label for="cost-down" style="display: none;">Cost Down</label>
               <input type="number" min="1" value="1" id="cost-down" />
               <span style="grid-column-start: 4; grid-column-end: 6;"></span>
-
-
             </div>
           </div>
           <div class="settings-section">
-            <p>Animation Speed</p>
+            <h2>Animation Speed</h2>
+            <p>Select speed for visualization:</p>
             <div class="selector-container">
               <label>
                 <input type="radio" name="speed" value="slow" checked>
@@ -101,14 +115,20 @@
           <button id="ok-button" class="button">Ok</button>
         </div>
       </div>
-      <div id="analytics">
+      <div id="analytics">Path length: -</div>
+    </section>
 
-        </div>
-    </div>
-    <div id="grid">
-    
-    </div>
-  </div>
-  <script type="module" src="dist/index.js"></script> 
+    <section id="visualization-area">
+      <div id="grid">
+        <!-- Board grid cells will be populated here -->
+      </div>
+    </section>
+  </main>
+
+  <footer >
+    <p>&copy; 2024 Pathfinding Algorithm Visualization Tool | Built for learning and demonstration purposes</p>
+  </footer>
+
+  <script type="module" src="dist/index.js"></script>
 </body>
 </html>

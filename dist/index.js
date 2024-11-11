@@ -110,6 +110,7 @@ if (startButton && resetButton && clearButton && analytics) {
             }
         }
         AppState.getInstance().isStop = true;
+        analytics.textContent = `Path length: -`;
         startButton.removeAttribute("disabled");
         resetButton.setAttribute("disabled", "true");
     };
@@ -123,6 +124,7 @@ if (startButton && resetButton && clearButton && analytics) {
             }
         }
         AppState.getInstance().isStop = true;
+        analytics.textContent = `Path length: -`;
         startButton.removeAttribute("disabled");
         resetButton.setAttribute("disabled", "true");
     };
