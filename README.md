@@ -13,7 +13,7 @@ A web-based visualization tool for exploring popular pathfinding algorithms. Thi
 
 ---
 ## Live Demo
-Try out the live version of the project: [Pathfinding Algorithm Visualization](https://winamarco.github.io/Pathfinding-Visualization/)
+Try out the live version of the project: [Pathfinding Algorithm Visualization](https://winarmarco.github.io/Pathfinding-Visualization/)
 
 ## Features
 - **Interactive Interface**: Visualize pathfinding algorithms on a customizable grid.
