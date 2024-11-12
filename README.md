@@ -8,8 +8,6 @@ A web-based visualization tool for exploring popular pathfinding algorithms. Thi
 - [Demo Video](#demo-video)
 - [Algorithms Supported](#algorithms-supported)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
 - [Contributing](#contributing)
 - [License](#license)
 
